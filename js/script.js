@@ -1,14 +1,21 @@
-const clock = document.querySelector('.time');
+const horas = document.getElementById('horas');
+const minutos = document.getElementById('minutos');
+const segundos = document.getElementById('segundos');
 
-function updateTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2,   
- '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
+const relogio = setInterval(function time() {
+    let dateToday = new Date();
+    let hr = dateToday.getHours();
+    let min = dateToday.getMinutes();
+    let s = dateToday.getSeconds();
 
-    clock.textContent = `${hours}:${minutes}:${seconds}`;
-}
+    if (hr < 10) hr = '0' + hr;
 
-setInterval(updateTime,   
- 1000); // Atualiza a cada 1000 milissegundos (1 segundo)
+    if (min < 10) min = '0' + min;
+
+    if (s < 10) s = '0' + s;
+
+    horas.textContent = hr;
+    minutos.textContent = min;
+    segundos.textContent = s;
+
+})
